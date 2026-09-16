@@ -1,18 +1,23 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>脉织双城｜张江城市灯塔AI艺术展参赛作品</title>
+<title>Weave of Twin Towers | Zhangjiang Urban Beacon AI Art Exhibition 2026</title>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", "PingFang SC", sans-serif;
   background-color: #0a0a0f;
   color: #e0e0e0;
   line-height: 1.7;
   overflow-x: hidden;
 }
+
+/* ===== 双语控制 ===== */
+.lang-zh { display: none; }
+body.zh-mode .lang-zh { display: block; }
+body.zh-mode .lang-en { display: none; }
 
 /* 导航 */
 .nav {
@@ -28,6 +33,7 @@ body {
   z-index: 100;
   border-bottom: 1px solid rgba(0,212,255,0.1);
 }
+.nav-left { display: flex; align-items: center; gap: 32px; }
 .nav-logo {
   font-size: 16px;
   font-weight: 600;
@@ -42,6 +48,19 @@ body {
   transition: color 0.3s;
 }
 .nav-links a:hover { color: #00d4ff; }
+.lang-switch {
+  cursor: pointer;
+  font-size: 13px;
+  color: #00d4ff;
+  border: 1px solid rgba(0,212,255,0.3);
+  padding: 6px 14px;
+  border-radius: 20px;
+  transition: all 0.3s;
+  user-select: none;
+}
+.lang-switch:hover {
+  background: rgba(0,212,255,0.1);
+}
 
 /* 首屏 Hero */
 .hero {
@@ -102,7 +121,7 @@ body {
   margin-bottom:40px;
 }
 
-/* ====== 双塔成品视频容器 ====== */
+/* 双塔成品视频容器 */
 .video-wrap{
   width:100%;
   max-width:1100px;
@@ -133,7 +152,7 @@ body {
 .iframe-container{
   position: relative;
   width: 100%;
-  padding-bottom: 56.25%; /*16:9比例*/
+  padding-bottom: 56.25%;
   height: 0;
   border-radius:10px;
   overflow:hidden;
@@ -178,6 +197,25 @@ body {
   background: #00d4ff;
 }
 
+/* 引用块 */
+.quote-block {
+  font-size: 19px;
+  font-style: italic;
+  color: #bfd4e0;
+  border-left: 3px solid #00d4ff;
+  padding: 16px 24px;
+  margin: 30px 0;
+  background: rgba(0,212,255,0.03);
+  border-radius: 0 8px 8px 0;
+}
+.quote-block cite {
+  display: block;
+  font-size: 14px;
+  color: #888;
+  margin-top: 10px;
+  font-style: normal;
+}
+
 /* 概念板块 */
 .concept-text {
   font-size: 17px;
@@ -217,36 +255,104 @@ body {
   font-size:15px;
 }
 
-/* 分镜叙事 */
-.acts-grid {
+/* ===== 六大非遗体系 ===== */
+.heritage-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 24px;
   margin-top: 30px;
 }
-.act-card {
+.heritage-card {
   background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(0,212,255,0.15);
+  border: 1px solid rgba(0,212,255,0.12);
   border-radius: 12px;
   padding: 28px;
   transition: all 0.3s;
 }
-.act-card:hover {
+.heritage-card:hover {
   border-color: rgba(0,212,255,0.4);
-  transform: translateY(-4px);
+  transform: translateY(-3px);
 }
-.act-num {
-  font-size: 14px;
-  color: #00d4ff;
-  letter-spacing: 2px;
-  margin-bottom: 12px;
-}
-.act-card h3 {
+.heritage-card h3 {
   color: #fff;
   font-size: 20px;
-  margin-bottom: 12px;
+  margin-bottom: 6px;
 }
-.act-card p {
+.heritage-subtitle {
+  color: #00d4ff;
+  font-size: 13px;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+.heritage-card p {
+  color: #aaa;
+  font-size: 14px;
+  margin-bottom: 14px;
+  line-height: 1.7;
+}
+.heritage-feature {
+  font-size: 13px;
+  color: #888;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.heritage-feature strong {
+  color: #ccc;
+  font-weight: 500;
+}
+
+/* ===== 分镜脚本板块 ===== */
+.storyboard-tabs {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.tab-btn {
+  padding: 12px 28px;
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 15px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s;
+}
+.tab-btn.active {
+  color: #00d4ff;
+  border-bottom-color: #00d4ff;
+}
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+.act-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.act-item {
+  background: rgba(255,255,255,0.02);
+  border-left: 3px solid rgba(0,212,255,0.3);
+  padding: 18px 24px;
+  border-radius: 0 8px 8px 0;
+}
+.act-meta {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.act-time {
+  color: #00d4ff;
+  font-size: 13px;
+  font-family: monospace;
+}
+.act-item h4 {
+  color: #fff;
+  font-size: 17px;
+}
+.act-item p {
   color: #aaa;
   font-size: 14px;
   line-height: 1.7;
@@ -399,198 +505,801 @@ body {
 
 <!-- 导航栏 -->
 <nav class="nav">
-  <div class="nav-logo">脉织双城｜URBAN BEACON 2025</div>
-  <div class="nav-links">
-    <a href="#concept">创作概念</a>
-    <a href="#twin">双塔叙事</a>
-    <a href="#tech">技术实现</a>
-    <a href="#process">创作过程</a>
-    <a href="#team">创作团队</a>
-    <a href="#context">展览背景</a>
+  <div class="nav-left">
+    <div class="nav-logo">
+      <span class="lang-en">WEAVE OF TWIN TOWERS · 2026</span>
+      <span class="lang-zh">脉织双城 · 2026</span>
+    </div>
+    <div class="nav-links">
+      <a href="#concept" class="lang-en">Concept</a>
+      <a href="#concept" class="lang-zh">理念</a>
+      <a href="#heritage" class="lang-en">Heritage</a>
+      <a href="#heritage" class="lang-zh">非遗</a>
+      <a href="#storyboard" class="lang-en">Storyboard</a>
+      <a href="#storyboard" class="lang-zh">分镜</a>
+      <a href="#tech" class="lang-en">Technical</a>
+      <a href="#tech" class="lang-zh">技术</a>
+      <a href="#team" class="lang-en">Team</a>
+      <a href="#team" class="lang-zh">团队</a>
+    </div>
+  </div>
+  <div class="lang-switch" onclick="toggleLanguage()">
+    <span class="lang-en">中文</span>
+    <span class="lang-zh">EN</span>
   </div>
 </nav>
 
-<!-- 首屏：作品主视觉 + 双塔成品视频 -->
+<!-- 首屏 -->
 <section class="hero">
-  <h1 class="hero-work-title">脉织双城</h1>
-  <div class="hero-subtitle">Weave of Two Cities</div>
+  <h1 class="hero-work-title">
+    <span class="lang-en">Weave of Twin Towers</span>
+    <span class="lang-zh">脉织双城</span>
+  </h1>
+  <div class="hero-subtitle">
+    <span class="lang-en">Veins of Intangible Heritage</span>
+    <span class="lang-zh">非遗文脉与科创之光</span>
+  </div>
   <blockquote class="hero-question">
-    非遗文脉何以生长为科创城市之光？
+    <span class="lang-en">How can the cultural veins of heritage grow into the light of a tech-innovation city?</span>
+    <span class="lang-zh">非遗文脉何以生长为科创城市之光？</span>
   </blockquote>
-  <div class="hero-author">张江城市灯塔AI艺术展 · 神笔马良团队</div>
+  <div class="hero-author">
+    <span class="lang-en">Zhangjiang Urban Beacon AI Art Exhibition 2026 · Magic Brush Team</span>
+    <span class="lang-zh">张江城市灯塔AI艺术展 2026 · 神笔马良团队</span>
+  </div>
 
-  <!-- =========双塔成品视频嵌入========= -->
+  <!-- 双塔成品视频 -->
   <div class="video-wrap">
-    <div class="video-title">▌作品成品演示 · 双塔同步</div>
+    <div class="video-title">
+      <span class="lang-en">▌ FINAL WORK PREVIEW · DUAL TOWER SYNCHRONISATION</span>
+      <span class="lang-zh">▌ 作品成品演示 · 双塔同步</span>
+    </div>
     <div class="twin-video-grid">
       <div class="video-card">
-        <h4>西塔｜城市织锦 · 文脉汇聚</h4>
+        <h4>
+          <span class="lang-en">West Tower · Urban Tapestry</span>
+          <span class="lang-zh">西塔 · 城市织锦</span>
+        </h4>
         <div class="iframe-container">
-          <iframe src="https://player.bilibili.com/player.html?bvid=BV1bWY16FEEu&page=1&high_quality=1" allowfullscreen="true" scrolling="no" border="0" frameborder="no" framespacing="0"></iframe>
+          <iframe src="https://player.bilibili.com/player.html?bvid=BV1bWY16FEEu&page=1&high_quality=1" allowfullscreen="true" scrolling="no" frameborder="0"></iframe>
         </div>
       </div>
       <div class="video-card">
-        <h4>东塔｜城市放映机 · 非遗窗格</h4>
+        <h4>
+          <span class="lang-en">East Tower · Urban Projector</span>
+          <span class="lang-zh">东塔 · 城市放映机</span>
+        </h4>
         <div class="iframe-container">
-          <iframe src="https://player.bilibili.com/player.html?bvid=BV1bWY16FEcT&page=1&high_quality=1" allowfullscreen="true" scrolling="no" border="0" frameborder="no" framespacing="0"></iframe>
+          <iframe src="https://player.bilibili.com/player.html?bvid=BV1bWY16FEcT&page=1&high_quality=1" allowfullscreen="true" scrolling="no" frameborder="0"></iframe>
         </div>
       </div>
     </div>
   </div>
-
 </section>
 
-<!-- 01 创作概念 -->
+<!-- 01 创作理念 -->
 <section class="section" id="concept">
-  <div class="section-label">CONCEPT</div>
-  <h2 class="section-title">创作理念</h2>
+  <div class="section-label">
+    <span class="lang-en">Concept</span>
+    <span class="lang-zh">创作理念</span>
+  </div>
+  <h2 class="section-title">
+    <span class="lang-en">Artistic Statement</span>
+    <span class="lang-zh">艺术陈述</span>
+  </h2>
+
+  <div class="quote-block">
+    <span class="lang-en">
+      “Cities have the capability of providing something for everybody, only because, and only when, they are created by everybody.”
+      <cite>— Jane Jacobs, <em>The Death and Life of Great American Cities</em></cite>
+    </span>
+    <span class="lang-zh">
+      “城市之所以能够为每一个人提供些什么，正是因为，也只有因为，它们由每一个人共同创造。”
+      <cite>—— 简·雅各布斯 《美国大城市的死与生》</cite>
+    </span>
+  </div>
 
   <p class="concept-text">
-本 AI 光影艺术作品《脉织双城》为张江科学之门双塔定制 2 分钟循环影像，以东塔、西塔双屏同步共生的形式展开叙事。东塔以流动的科技流线逐一唤醒石库门、崇明土布、徐行草编、海派绒绣、剪纸与水墨等上海本土非遗肌理；西塔承接汇聚全部人文脉络，将分散的非遗符号熔合重构，升维形成人文底色与科创晶格共存的城市光幕。
+    <span class="lang-en">
+      What Jane Jacobs wrote about urbanism sixty years ago remains equally relevant if we replace the city with artificial intelligence. Neither is authored by a single intelligence, but emerges through countless relationships between individuals, systems, histories and desires.
+    </span>
+    <span class="lang-zh">
+      城市理论家雅各布斯六十年前关于大城市的论述，若将“城市”置换为“人工智能”，依然同样成立：二者都并非由某种单一智能所书写，而是在个体、系统、历史与愿景之间无数错综复杂的关系中不断生成。
+    </span>
   </p>
 
   <div class="concept-highlight">
-非遗仅仅属于过去吗？本土人文又该如何借由 AI 媒介参与未来城市的想象？
+    <span class="lang-en">
+      Does intangible heritage only belong to the past? How can local humanistic culture participate in imagining the city of the future through AI?
+    </span>
+    <span class="lang-zh">
+      非遗仅仅属于过去吗？本土人文又该如何借由 AI 媒介参与未来城市的想象？
+    </span>
   </div>
 
   <p class="concept-text">
-作品回应本次展览 “开放问题，开放未来” 的主题。创作团队运用 AIGC 流体生成、分层伪 3D 渲染技术，把具象非遗转化为抽象动态光影，适配超高层塔楼夜间 LED 立面展示。作品不输出标准答案，借由双塔光影对话，邀请公众共同思考人文传统、人工智能与科创城市三者之间的依存关系。
+    <span class="lang-en">
+      <em>Weave of Twin Towers</em> is a 2-minute looping AI light-art work custom-designed for the twin towers of Zhangjiang Science Gate. Presented as a synchronous dual-screen narrative across the East and West towers, the work animates six forms of Shanghai intangible cultural heritage through abstract flowing light textures.
+    </span>
+    <span class="lang-zh">
+      《脉织双城》为张江科学之门双塔定制的 2 分钟循环 AI 光影艺术作品，以东塔、西塔双屏同步共生的形式展开叙事，将六种上海本土非遗肌理转化为抽象流动的光的语言。
+    </span>
+  </p>
+
+  <p class="concept-text">
+    <span class="lang-en">
+      The work responds to the exhibition theme <em>“Open Questions, Open Futures”</em>. Using AIGC fluid generation and layered pseudo-3D rendering techniques, tangible heritage motifs are translated into abstract dynamic light forms adapted for super-tall tower LED facades. Instead of delivering answers, the work invites the public to reflect on the interdependence between cultural tradition, artificial intelligence and the innovation city.
+    </span>
+    <span class="lang-zh">
+      作品回应本次展览“开放问题，开放未来”的主题。创作团队运用 AIGC 流体生成、分层伪 3D 渲染技术，把具象非遗转化为抽象动态光影，适配超高层塔楼夜间 LED 立面展示。作品不输出标准答案，借由双塔光影对话，邀请公众共同思考人文传统、人工智能与科创城市三者之间的依存关系。
+    </span>
   </p>
 </section>
 
-<!-- 02 双塔叙事定位 -->
-<section class="section" id="twin">
-  <div class="section-label">NARRATIVE</div>
-  <h2 class="section-title">双塔对仗叙事</h2>
+<!-- 02 双塔叙事 -->
+<section class="section">
+  <div class="section-label">
+    <span class="lang-en">Narrative</span>
+    <span class="lang-zh">叙事结构</span>
+  </div>
+  <h2 class="section-title">
+    <span class="lang-en">Dual Tower Poetics</span>
+    <span class="lang-zh">双塔对仗诗学</span>
+  </h2>
   <div class="twin-card-grid">
     <div class="twin-card">
-      <h3>东塔｜城市放映机 · 非遗窗格</h3>
-      <p>离散 · 独立 · 个体记忆放映<br/>
-每一扇悬浮半透明窗格代表一段上海非遗城市记忆。窗格缓缓打开、放映、向西流动。六类非遗依次登场，独立呈现，代表个体分散的城市记忆。</p>
+      <h3>
+        <span class="lang-en">East Tower · Urban Projector</span>
+        <span class="lang-zh">东塔 · 城市放映机</span>
+      </h3>
+      <p>
+        <span class="lang-en"><strong>Discrete · Individual · Memory Projection</strong><br><br>
+Each floating semi-transparent window pane carries a fragment of Shanghai’s cultural memory. Panes slowly emerge, illuminate and drift westward. Six heritage textures appear one by one as separate, independent voices — a metaphor for individual, dispersed urban memories.</span>
+        <span class="lang-zh"><strong>离散 · 独立 · 个体记忆放映</strong><br><br>
+每一扇悬浮半透明窗格代表一段上海非遗城市记忆。窗格缓缓打开、放映、向西流动。六类非遗依次登场，独立呈现，代表个体分散的城市记忆。</span>
+      </p>
     </div>
     <div class="twin-card">
-      <h3>西塔｜城市织锦 · 文脉汇聚</h3>
-      <p>融合 · 交织 · 集体城市织锦<br/>
-承接东塔分散的人文脉络，所有非遗肌理互相渗透消融边界，融合为完整人文织底，向上生长科创晶格光幕，象征集体文脉生长未来科创城市。</p>
+      <h3>
+        <span class="lang-en">West Tower · Urban Tapestry</span>
+        <span class="lang-zh">西塔 · 城市织锦</span>
+      </h3>
+      <p>
+        <span class="lang-en"><strong>Convergent · Collective · City Weaving</strong><br><br>
+Receiving the dispersed cultural veins from the East Tower, all heritage textures permeate one another and dissolve their boundaries. They fuse into a complete humanist fabric, from which a tech-lattice cityscape grows upward — embodying how collective culture gives birth to the future innovation city.</span>
+        <span class="lang-zh"><strong>融合 · 交织 · 集体城市织锦</strong><br><br>
+承接东塔分散的人文脉络，所有非遗肌理互相渗透消融边界，融合为完整人文织底，向上生长科创晶格光幕，象征集体文脉生长出未来科创城市。</span>
+      </p>
     </div>
   </div>
 </section>
 
-<!-- 03 技术实现 -->
+<!-- 03 六大非遗体系 -->
+<section class="section" id="heritage">
+  <div class="section-label">
+    <span class="lang-en">Heritage Lexicon</span>
+    <span class="lang-zh">非遗肌理体系</span>
+  </div>
+  <h2 class="section-title">
+    <span class="lang-en">Six Forms of Shanghai Intangible Heritage</span>
+    <span class="lang-zh">六大上海非遗肌理语汇</span>
+  </h2>
+
+  <p class="concept-text" style="margin-bottom: 10px;">
+    <span class="lang-en">
+      All heritage motifs are translated into abstract texture languages rather than literal representations. Each form retains its recognisable material character while existing purely as light, texture and rhythm on the building facade.
+    </span>
+    <span class="lang-zh">
+      所有非遗意象均转译为抽象肌理语言，而非写实再现。每一种工艺都保留其可识别的物质特质，同时以纯粹的光、纹理与节奏呈现在建筑立面上。
+    </span>
+  </p>
+
+  <div class="heritage-grid">
+    <!-- 石库门 -->
+    <div class="heritage-card">
+      <h3>
+        <span class="lang-en">Shikumen Architecture</span>
+        <span class="lang-zh">石库门</span>
+      </h3>
+      <div class="heritage-subtitle">
+        <span class="lang-en">Urban Foundation</span>
+        <span class="lang-zh">城市基底</span>
+      </div>
+      <p>
+        <span class="lang-en">The iconic brick archway of Shanghai's traditional lilong neighbourhoods, forming the basic structural grammar of the city's collective memory.</span>
+        <span class="lang-zh">上海传统里弄住宅的标志性青砖拱券，构成城市集体记忆的基础结构语法。</span>
+      </p>
+      <div class="heritage-feature">
+        <strong><span class="lang-en">Visual texture：</span><span class="lang-zh">视觉肌理：</span></strong>
+        <span class="lang-en">Grey brick grain, arched contours, delicate lattice window frames, warm interior glow</span>
+        <span class="lang-zh">青砖肌理、拱形轮廓、雕花窗格、微弱暖黄室内光</span>
+      </div>
+    </div>
+
+    <!-- 崇明土布 -->
+    <div class="heritage-card">
+      <h3>
+        <span class="lang-en">Chongming Handwoven Fabric</span>
+        <span class="lang-zh">崇明土布</span>
+      </h3>
+      <div class="heritage-subtitle">
+        <span class="lang-en">Weft & Warp</span>
+        <span class="lang-zh">经纬织造</span>
+      </div>
+      <p>
+        <span class="lang-en">Traditional cotton textile craft from Chongming Island, with its characteristic indigo and off-white geometric weave patterns.</span>
+        <span class="lang-zh">崇明岛传统手工棉纺织技艺，以靛蓝与本白交织的几何格纹为标志性特征。</span>
+      </p>
+      <div class="heritage-feature">
+        <strong><span class="lang-en">Visual texture：</span><span class="lang-zh">视觉肌理：</span></strong>
+        <span class="lang-en">Indigo-white grid, reed flower motifs, natural fibre flow</span>
+        <span class="lang-zh">蓝白经纬格纹、芦扉花纹、天然织物纤维流动</span>
+      </div>
+    </div>
+
+    <!-- 徐行草编 -->
+    <div class="heritage-card">
+      <h3>
+        <span class="lang-en">Xuxing Straw Weaving</span>
+        <span class="lang-zh">徐行草编</span>
+      </h3>
+      <div class="heritage-subtitle">
+        <span class="lang-en">Circular Weave</span>
+        <span class="lang-zh">同心圆编织</span>
+      </div>
+      <p>
+        <span class="lang-en">A millennium-old straw craft from Jiading district, woven from local grass into precise concentric circular patterns.</span>
+        <span class="lang-zh">嘉定地区千年草本编织工艺，以本地黄草编织出精准的同心圆螺旋纹路。</span>
+      </p>
+      <div class="heritage-feature">
+        <strong><span class="lang-en">Visual texture：</span><span class="lang-zh">视觉肌理：</span></strong>
+        <span class="lang-en">Concentric rings, interlaced straw strips, warm earth tone breathing flow</span>
+        <span class="lang-zh">同心圆编织纹路、草条交错肌理、暖棕浅黄呼吸流动</span>
+      </div>
+    </div>
+
+    <!-- 上海绒绣 -->
+    <div class="heritage-card">
+      <h3>
+        <span class="lang-en">Shanghai Velvet Embroidery</span>
+        <span class="lang-zh">上海绒绣</span>
+      </h3>
+      <div class="heritage-subtitle">
+        <span class="lang-en">Soft Chromatic Grain</span>
+        <span class="lang-zh">柔色颗粒</span>
+      </div>
+      <p>
+        <span class="lang-en">European-style needlepoint adapted into a local Shanghai craft, known for its painterly colour blending and velvet-like surface texture.</span>
+        <span class="lang-zh">由欧洲绒绣传入上海后本土化发展的工艺，以绘画般的色彩晕染和绒面颗粒质感著称。</span>
+      </p>
+      <div class="heritage-feature">
+        <strong><span class="lang-en">Visual texture：</span><span class="lang-zh">视觉肌理：</span></strong>
+        <span class="lang-en">Velvety pixel grain, low-saturation Morandi palette, soft colour bleeding</span>
+        <span class="lang-zh">绒面颗粒质感、低饱和莫兰迪花卉色块、柔色堆叠晕染</span>
+      </div>
+    </div>
+
+    <!-- 海派剪纸 -->
+    <div class="heritage-card">
+      <h3>
+        <span class="lang-en">Haipai Paper-cutting</span>
+        <span class="lang-zh">海派剪纸</span>
+      </h3>
+      <div class="heritage-subtitle">
+        <span class="lang-en">Cut-out Silhouette</span>
+        <span class="lang-zh">镂空剪影</span>
+      </div>
+      <p>
+        <span class="lang-en">The Shanghai school of paper-cut, combining northern boldness with southern delicacy, characterised by flowing linework and negative-space design.</span>
+        <span class="lang-zh">融合北方粗犷与南方细腻的上海剪纸流派，以流畅线条与镂空负形设计为特点。</span>
+      </p>
+      <div class="heritage-feature">
+        <strong><span class="lang-en">Visual texture：</span><span class="lang-zh">视觉肌理：</span></strong>
+        <span class="lang-en">Vermilion ink outline, cloud & bird motifs, translucent silhouette flow</span>
+        <span class="lang-zh">朱砂红墨色镂空线条、云纹花鸟纹样、透光剪影流动</span>
+      </div>
+    </div>
+
+    <!-- 水墨笔韵 -->
+    <div class="heritage-card">
+      <h3>
+        <span class="lang-en">Ink Wash Aesthetics</span>
+        <span class="lang-zh">水墨笔韵</span>
+      </h3>
+      <div class="heritage-subtitle">
+        <span class="lang-en">Unifying Qi</span>
+        <span class="lang-zh">气韵统一</span>
+      </div>
+      <p>
+        <span class="lang-en">Classical Chinese ink painting sensibility that permeates and unifies all other heritage textures with its characteristic breath and diffusion.</span>
+        <span class="lang-zh">中国传统书画的水墨美学，以特有的气韵与晕染渗透并统一所有其他非遗肌理。</span>
+      </p>
+      <div class="heritage-feature">
+        <strong><span class="lang-en">Visual texture：</span><span class="lang-zh">视觉肌理：</span></strong>
+        <span class="lang-en">Ink wash bleeding, brush stroke definition, rice paper grain, subtle ink haze</span>
+        <span class="lang-zh">墨晕、笔锋、宣纸纹理、淡墨氤氲流动</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 完整分镜脚本 -->
+<section class="section" id="storyboard">
+  <div class="section-label">
+    <span class="lang-en">Storyboard</span>
+    <span class="lang-zh">分镜脚本</span>
+  </div>
+  <h2 class="section-title">
+    <span class="lang-en">Full 2-Minute Scene Breakdown</span>
+    <span class="lang-zh">2分钟完整分镜</span>
+  </h2>
+
+  <div class="storyboard-tabs">
+    <button class="tab-btn active" onclick="switchTab('east')">
+      <span class="lang-en">East Tower</span>
+      <span class="lang-zh">东塔</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('west')">
+      <span class="lang-en">West Tower</span>
+      <span class="lang-zh">西塔</span>
+    </button>
+  </div>
+
+  <!-- 东塔分镜 -->
+  <div class="tab-content active" id="tab-east">
+    <div class="act-list">
+      <div class="act-item">
+        <div class="act-meta">
+          <span class="act-time">00:00 – 00:15</span>
+          <h4>
+            <span class="lang-en">Act 1 · Empty Realm, Memory Awaiting</span>
+            <span class="lang-zh">第一幕 · 空境留白，记忆待启</span>
+          </h4>
+        </div>
+        <p>
+          <span class="lang-en">Deep indigo-blue abstract urban void with drifting mist. Subtle rice-paper texture breathes slowly; faint starlight drifts. The frame is clean and empty — extreme stillness before memory begins.</span>
+          <span class="lang-zh">深灰蓝抽象都市空境，弥散薄雾，淡墨宣纸肌理微弱呼吸，细碎星光缓慢漂浮。画面干净空旷，极致静谧，记忆尚未苏醒。</span>
+        </p>
+      </div>
+
+      <div class="act-item">
+        <div class="act-meta">
+          <span class="act-time">00:15 – 00:30</span>
+          <h4>
+            <span class="lang-en">Act 2 · First Window Awakens, Shikumen Forms</span>
+            <span class="lang-zh">第二幕 · 首窗苏醒，石库门成形</span>
+          </h4>
+        </div>
+        <p>
+          <span class="lang-en">Light condenses at the centre, slowly forming a floating semi-transparent Shikumen arch window. Inside flows abstract grey-brick texture, arch contours and delicate lattice patterns with a faint warm interior glow. Two blank window silhouettes rise from below.</span>
+          <span class="lang-zh">画面中部微光凝聚，缓缓生成一扇悬浮半透明石库门拱形窗格。窗内流动抽象青砖肌理、拱形轮廓、细腻雕花窗格纹理与微弱暖黄柔光。底部升起两扇极简空白窗格雏形。</span>
+        </p>
+      </div>
+
+      <div class="act-item">
+        <div class="act-meta">
+          <span class="act-time">00:30 – 00:45</span>
+          <h4>
+            <span class="lang-en">Act 3 · Dual Windows Bloom, Weaving Crafts Arise</span>
+            <span class="lang-zh">第三幕 · 双窗绽放，织造苏醒</span>
+          </h4>
+        </div>
+        <p>
+          <span class="lang-en">Two complete window panes emerge: Chongming Fabric with its indigo-white weave and reed flower patterns; Xuxing Straw Weave with concentric circular grain. Three windows float at different depths, establishing the core motif of weaving.</span>
+          <span class="lang-zh">底部新生两扇完整窗格：崇明土布窗流动蓝白经纬格纹与芦扉花纹；徐行草编窗舒展同心圆编织纹路。三扇窗格高低错落，建立“织”的核心母题。</span>
+        </p>
+      </div>
+
+      <div class="act-item">
+        <div class="act-meta">
+          <span class="act-time">00:45 – 01:00</span>
+          <h4>
+            <span class="lang-en">Act 4 · Colour Reborn, Embroidery & Paper-cut</span>
+            <span class="lang-zh">第四幕 · 色彩新生，绒绣剪纸</span>
+          </h4>
+        </div>
+        <p>
+          <span class="lang-en">Shanghai Velvet Embroidery and Haipai Paper-cutting join the composition. Velvet window holds low-saturation floral colour bleeding; paper-cut window carries vermilion openwork lines. The whole composition begins a very slow drift rightward — westward drift begins.</span>
+          <span class="lang-zh">上海绒绣与海派剪纸入画。绒绣窗内低饱和莫兰迪花卉柔色堆叠晕染；剪纸窗内朱砂红墨色镂空线条流动。画面整体开始极慢向右漂移，开启“向西汇入”的趋势。</span>
+        </p>
+      </div>
+
+      <div class="act-item">
+        <div class="act-meta">
+          <span class="act-time">01:00 – 01:15</span>
+          <h4>
+            <span class="lang-en">Act 5 · Ink Unifies, Qi Resolves</span>
+            <span class="lang-zh">第五幕 · 水墨入境，气韵统一</span>
+          </h4>
+        </div>
+        <p>
+          <span class="lang-en">The sixth Ink Wash window enters. Ink haze drifts and permeates softly between all panes, unifying the visual tone of all six heritage forms. The ensemble continues drifting right; right-edge panes gently fade.</span>
+          <span class="lang-zh">第六扇水墨笔韵窗格登场。淡墨氤氲在所有窗格之间柔和渗透，统一六种非遗的整体气韵。所有窗格匀速向右漂移，右侧窗格轻微淡化隐去。</span>
+        </p>
+      </div>
+
+      <div class="act-item">
+        <div class="act-meta">
+          <span class="act-time">01:15 – 01:30</span>
+          <h4>
+            <span class="lang-en">Act 6 · Window-Shadow Weave, Memory Flourishes</span>
+            <span class="lang-zh">第六幕 · 窗影交织，记忆繁盛</span>
+          </h4>
+        </div>
+        <p>
+          <span class="lang-en">Panes of varying sizes fill the frame — foreground panes sharp and detailed, background panes diffused and atmospheric. They form a light, thriving community of urban memories, continuously flowing rightward.</span>
+          <span class="lang-zh">大小错落的多扇非遗窗格布满画面，前景清晰通透、肌理饱满，远景朦胧虚化、微光弥散，形成轻盈繁盛的城市记忆群落，持续向右缓慢流动。</span>
+        </p>
+      </div>
+
+      <div class="act-item">
+        <div class="act-meta">
+          <span class="act-time">01:30 – 01:45</span>
+          <h4>
+            <span class="lang-en">Act 7 · Highlight, City Memory in Full Projection</span>
+            <span class="lang-zh">第七幕 · 高光时刻，全城放映</span>
+          </h4>
+        </div>
+        <p>
+          <span class="lang-en">Overall brightness rises gently, halos diffuse softly. All six heritage textures are fully legible and flowing. The frame feels warm, complete and resolved — the moment urban memory fully awakens.</span>
+          <span class="lang-zh">所有窗格亮度温柔抬升，光晕柔和弥散。六大非遗肌理全部清晰呈现、细腻流动，画面饱满治愈，城市记忆完全苏醒、持续放映。</span>
+        </p>
+      </div>
+
+      <div class="act-item">
+        <div class="act-meta">
+          <span class="act-time">01:45 – 02:00</span>
+          <h4>
+            <span class="lang-en">Act 8 · Echoing Cycle, Memory Perpetual</span>
+            <span class="lang-zh">第八幕 · 余韵循环，记忆永续</span>
+          </h4>
+        </div>
+        <p>
+          <span class="lang-en">Light recedes; brightness returns to a quiet level. Right-side panes fade out; new faint glimmers emerge at the bottom. The work returns to stillness, closing the loop seamlessly for infinite cycle playback.</span>
+          <span class="lang-zh">光影回落，亮度趋于柔和。右侧窗格陆续淡隐，底部保留新生微光。画面回归空灵静谧，完美衔接片头空境，实现无限循环播放。</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 西塔分镜 -->
+  <div class="tab-content" id="tab-west">
+    <div class="act-list">
+      <div class="act-item">
+        <div class="act-meta">
+          <span class="act-time">00:00 – 00:15</span>
+          <h4>
+            <span class="lang-en">Act 1 · Veins Awaken, Empty Realm Accumulating</span>
+            <span class="lang-zh">第一幕 · 文脉初醒，空境蓄韵</span>
+          </h4>
+        </div>
+        <p>
+          <span class="lang-en">Profound deep-indigo digital void. Fine warm-silver light particles drift along the left edge in slow, breathing rhythm. The composition is minimal, still and full of potential — zero point before convergence begins.</span>
+          <span class="lang-zh">极致空灵深邃的深灰蓝纯数字空境。画面左侧边缘漂浮细碎暖银微光粒子，节奏舒缓、轻微呼吸脉动。画面极简留白，是汇聚开始前的零点。</span>
+        </p>
+      </div>
+
+      <div class="act-item">
+        <div class="act-meta">
+          <span class="act-time">00:15 – 00:30</span>
+          <h4>
+            <span class="lang-en">Act 2 · Foundation Veins, City Base Constructed</span>
+            <span class="lang-zh">第二幕 · 基脉汇流，筑造城底</span>
+          </h4>
+        </div>
+        <p>
+          <span class="lang-en">Thin luminous fluid lines flow steadily in from the left. Abstract Shikumen heritage texture emerges along their paths — brick grain, arch contours, carved lattice — weaving an orderly, ethereal urban base grid.</span>
+          <span class="lang-zh">纤细通透的暖银发光流体线条从画面左侧匀速汇入。流动轨迹中缓缓浮现抽象石库门非遗肌理，青砖纹理、拱形轮廓、雕花脉络逐步舒展，搭建出规整空灵的城市基底网格。</span>
+        </p>
+      </div>
+
+      <div class="act-item">
+        <div class="act-meta">
+          <span class="act-time">00:30 – 00:45</span>
+          <h4>
+            <span class="lang-en">Act 3 · Weft & Warp, Two Crafts Symbiosis</span>
+            <span class="lang-zh">第三幕 · 经纬织韵，双艺共生</span>
+          </h4>
+        </div>
+        <p>
+          <span class="lang-en">Dense warm-silver warp-weft lines continue streaming in. Chongming Fabric texture forms on the left; Xuxing Straw Weave concentric rings expand on the right. Two textile traditions symmetrically settle into the woven base.</span>
+          <span class="lang-zh">大量细密暖银经纬发光流线持续汇入延展。画面左侧生成崇明土布抽象肌理；画面右侧衍生徐行草编同心圆螺旋纹路。两类织造肌理对称分布，平稳并网加密。</span>
+        </p>
+      </div>
+
+      <div class="act-item">
+        <div class="act-meta">
+          <span class="act-time">00:45 – 01:00</span>
+          <h4>
+            <span class="lang-en">Act 4 · Texture Blossom, New Artistic Voices</span>
+            <span class="lang-zh">第四幕 · 纹理叠绽，艺韵新生</span>
+          </h4>
+        </div>
+        <p>
+          <span class="lang-en">Fluid lines layer across the whole field. Low-saturation soft colour blooms into Velvet Embroidery grain; sharp angular lines trace Paper-cut openwork patterns and cloud motifs. Multiple heritage textures gently superimpose and interpenetrate.</span>
+          <span class="lang-zh">全域暖银流体线条持续游走、层层叠加。线条交汇处晕染出低饱和柔色光影，生成绒绣颗粒质感；细碎棱角线条穿插全域，勾勒出剪纸镂空云纹与花鸟轮廓。</span>
+        </p>
+      </div>
+
+      <div class="act-item">
+        <div class="act-meta">
+          <span class="act-time">01:00 – 01:15</span>
+          <h4>
+            <span class="lang-en">Act 5 · Ink Fusion, Realm Unified</span>
+            <span class="lang-zh">第五幕 · 水墨融境，全域归一</span>
+          </h4>
+        </div>
+        <p>
+          <span class="lang-en">Gradient ink-wash texture floods the frame. Ink atmosphere wraps and permeates all preceding heritage textures, dissolving boundaries and unifying them into a single, coherent Eastern humanist system.</span>
+          <span class="lang-zh">渐变通透的墨色流体纹理全域晕染铺开。水墨肌理温柔包裹、渗透画面内所有非遗纹理，彻底消融各类元素的边界壁垒，统一为完整温润连贯的东方人文体系。</span>
+        </p>
+      </div>
+
+      <div class="act-item">
+        <div class="act-meta">
+          <span class="act-time">01:15 – 01:30</span>
+          <h4>
+            <span class="lang-en">Act 6 · Veins Converge, Tech-innovation Ascends</span>
+            <span class="lang-zh">第六幕 · 聚脉成网，科创升维</span>
+          </h4>
+        </div>
+        <p>
+          <span class="lang-en">All six heritage veins fully integrate into a complete cultural fabric. Above it rises a transparent cool-silver tech-lattice matrix — a dual-layer future city space: humanist texture below, luminous tech-structure above.</span>
+          <span class="lang-zh">六大非遗脉络完全闭合组网，全方位嵌套融合，形成饱满的人文织底。在原生人文织底之上，层层向上生长出通透澄澈的冷银科创晶格矩阵，形成双层嵌套的未来城市空间。</span>
+        </p>
+      </div>
+
+      <div class="act-item">
+        <div class="act-meta">
+          <span class="act-time">01:30 – 01:45</span>
+          <h4>
+            <span class="lang-en">Act 7 · Galaxy Bloom, Light Curtain Glowing</span>
+            <span class="lang-zh">第七幕 · 星河盛放，光幕生辉</span>
+          </h4>
+        </div>
+        <p>
+          <span class="lang-en">Overall luminance rises softly and evenly. The heritage base flows warm and detailed; the tech-lattice above glows clear and diffused. The work reaches its visual climax — human warmth and technological serenity in perfect balance.</span>
+          <span class="lang-zh">全域画面光影柔和提亮。底层非遗人文肌理温润流转、细节尽显；上层科创晶格通透澄澈、微光弥散。作品抵达视觉高潮，人文温度与科技冷峻质感完美交融。</span>
+        </p>
+      </div>
+
+      <div class="act-item">
+        <div class="act-meta">
+          <span class="act-time">01:45 – 02:00</span>
+          <h4>
+            <span class="lang-en">Act 8 · Steady Return, Perpetual Loop</span>
+            <span class="lang-zh">第八幕 · 稳态归境，永续闭环</span>
+          </h4>
+        </div>
+        <p>
+          <span class="lang-en">Highlights gently recede. Tech-lattice and cultural fabric settle back into stillness. Complex textures simplify, returning to ethereal minimalism. The work closes in perfect circularity, ready for infinite loop playback.</span>
+          <span class="lang-zh">全域高光温柔收敛回落，科创晶格与人文织面平缓归序、舒缓沉淀。繁复纹理层次逐步简化，回归空灵高级的极简质感，首尾呼应，形成生生不息的循环闭环。</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 技术实现 -->
 <section class="section" id="tech">
-  <div class="section-label">METHODOLOGY</div>
-  <h2 class="section-title">技术实现 & 大屏规范</h2>
+  <div class="section-label">
+    <span class="lang-en">Methodology</span>
+    <span class="lang-zh">技术实现</span>
+  </div>
+  <h2 class="section-title">
+    <span class="lang-en">Technical Implementation & Display Specs</span>
+    <span class="lang-zh">技术实现与大屏规范</span>
+  </h2>
 
   <div class="tech-stack">
     <div class="tech-block">
-      <h4>AIGC 创作工作流</h4>
+      <h4>
+        <span class="lang-en">AIGC Production Pipeline</span>
+        <span class="lang-zh">AIGC 创作工作流</span>
+      </h4>
       <ul class="tech-list">
-        <li>分层伪3D流体动态生成</li>
-        <li>定制正向/负面提示词体系</li>
-        <li>8段×15s分镜逐段生成素材</li>
-        <li>Premiere Pro剪辑调色拼接2分钟循环成片</li>
+        <li class="lang-en">Layered pseudo-3D fluid dynamic generation</li>
+        <li class="lang-zh">分层伪3D流体动态生成</li>
+        <li class="lang-en">Custom positive / negative prompt system</li>
+        <li class="lang-zh">定制正向/负面提示词体系</li>
+        <li class="lang-en">8 segments × 15s storyboarded generation</li>
+        <li class="lang-zh">8段×15s分镜逐段生成素材</li>
+        <li class="lang-en">Premiere Pro editing, grading and 2-minute loop assembly</li>
+        <li class="lang-zh">Premiere Pro剪辑调色拼接2分钟循环成片</li>
       </ul>
     </div>
     <div class="tech-block">
-      <h4>塔楼输出规格（官方标准）</h4>
+      <h4>
+        <span class="lang-en">Official Tower Output Specs</span>
+        <span class="lang-zh">塔楼输出官方规格</span>
+      </h4>
       <ul class="tech-list">
-        <li>东塔：1584 × 4672｜MP4｜25fps H.264</li>
-        <li>西塔：1736 × 4672｜MOV/DXV/DXV3｜25fps</li>
-        <li>时长：120秒无缝循环，单文件≤200MB</li>
-        <li>视觉约束：低频慢动态，无爆闪、无文字logo</li>
+        <li class="lang-en">East Tower: 1584 × 4672 | MP4 | 25fps H.264</li>
+        <li class="lang-zh">东塔：1584 × 4672｜MP4｜25fps H.264</li>
+        <li class="lang-en">West Tower: 1736 × 4672 | MOV / DXV / DXV3 | 25fps</li>
+        <li class="lang-zh">西塔：1736 × 4672｜MOV/DXV/DXV3｜25fps</li>
+        <li class="lang-en">Duration: 120s seamless loop, ≤ 200MB per file</li>
+        <li class="lang-zh">时长：120秒无缝循环，单文件≤200MB</li>
+        <li class="lang-en">Constraints: ultra-slow motion, no flicker, no text or logos</li>
+        <li class="lang-zh">视觉约束：低频慢动态，无爆闪、无文字logo</li>
       </ul>
     </div>
   </div>
 
   <div class="adapt-note">
-<strong>双塔适配说明：</strong>针对幕墙东西立面灯带缺失区域，利用视觉暂留，将关键叙事与视觉重心放置南北主立面；画面做暗场过渡，保证叙事完整连贯。
+    <strong>
+      <span class="lang-en">Facade adaptation note：</span>
+      <span class="lang-zh">双塔适配说明：</span>
+    </strong>
+    <span class="lang-en"> Where LED strips are absent on the east and west facades, visual persistence and dark-scene transitions are used to maintain narrative continuity, with key dramatic moments centred on the fully-illuminated north and south main facades.</span>
+    <span class="lang-zh">针对幕墙东西立面灯带缺失区域，利用视觉暂留，将关键叙事与视觉重心放置南北主立面；画面做暗场过渡，保证叙事完整连贯。</span>
   </div>
 </section>
 
-<!-- 04 创作过程 -->
+<!-- 06 创作过程 -->
 <section class="section" id="process">
-  <div class="section-label">CREATION PROCESS</div>
-  <h2 class="section-title">创作过程</h2>
+  <div class="section-label">
+    <span class="lang-en">Creation Process</span>
+    <span class="lang-zh">创作过程</span>
+  </div>
+  <h2 class="section-title">
+    <span class="lang-en">Creative Development Timeline</span>
+    <span class="lang-zh">创作演进脉络</span>
+  </h2>
 
   <div class="process-timeline">
     <div class="process-item">
-      <h4>概念确立：双塔对仗构思</h4>
-      <p>确立东塔“个体记忆放映”、西塔“集体文脉融合”的双向叙事，回应展览主题，把上海非遗做抽象光影转译，拒绝写实民俗堆砌。</p>
+      <h4>
+        <span class="lang-en">Concept: Dual Tower Dialogic Structure</span>
+        <span class="lang-zh">概念确立：双塔对仗构思</span>
+      </h4>
+      <p>
+        <span class="lang-en">Established the bilateral narrative — individual memory projection on the East Tower, collective cultural convergence on the West Tower. Shanghai heritage is translated into abstract light language rather than literal folk representation.</span>
+        <span class="lang-zh">确立东塔“个体记忆放映”、西塔“集体文脉融合”的双向叙事，回应展览主题，将上海非遗做抽象光影转译，拒绝写实民俗堆砌。</span>
+      </p>
     </div>
     <div class="process-item">
-      <h4>建立六大上海非遗窗格体系</h4>
-      <p>选定石库门、崇明土布、徐行草编、上海绒绣、海派剪纸、水墨笔韵；定义每一类非遗对应的抽象肌理语言。</p>
+      <h4>
+        <span class="lang-en">System: Six Heritage Window Pane Lexicon</span>
+        <span class="lang-zh">体系：六大非遗窗格语汇</span>
+      </h4>
+      <p>
+        <span class="lang-en">Defined six core heritage categories and their corresponding abstract texture vocabularies, building a consistent visual language across both towers.</span>
+        <span class="lang-zh">选定石库门、崇明土布、徐行草编、上海绒绣、海派剪纸、水墨笔韵六大类，定义每一类非遗对应的抽象肌理语言，建立双塔统一的视觉语法。</span>
+      </p>
     </div>
     <div class="process-item">
-      <h4>分镜脚本与提示词研发</h4>
-      <p>完成东塔8段、西塔8段，每段15秒完整闭环脚本；搭建严格正向、负面提示词库，控制画面风格，规避频闪、硬边框、写实物品。</p>
+      <h4>
+        <span class="lang-en">Script: Storyboards & Prompt Engineering</span>
+        <span class="lang-zh">脚本：分镜与提示词研发</span>
+      </h4>
+      <p>
+        <span class="lang-en">Completed 8-segment closed-loop scripts for both towers at 15 seconds each. Built a strict positive/negative prompt library to control visual style and avoid flicker, hard edges and photorealistic objects.</span>
+        <span class="lang-zh">完成东塔、西塔各8段每段15秒完整闭环脚本；搭建严格正向、负面提示词库，控制画面风格，规避频闪、硬边框、写实物品。</span>
+      </p>
     </div>
     <div class="process-item">
-      <h4>视觉素材生成与迭代调试</h4>
-      <p>多轮迭代测试，控制运动为极低频呼吸流动，适配超高层LED户外大屏远距离观看。</p>
+      <h4>
+        <span class="lang-en">Iteration: Visual Generation & Calibration</span>
+        <span class="lang-zh">迭代：视觉生成与调试</span>
+      </h4>
+      <p>
+        <span class="lang-en">Multiple rounds of testing to tune motion to an ultra-low breathing rhythm, optimised for long-distance viewing on super-tall outdoor LED facades at night.</span>
+        <span class="lang-zh">多轮迭代测试，控制运动为极低频呼吸流动，适配超高层LED户外大屏夜间远距离观看。</span>
+      </p>
     </div>
     <div class="process-item">
-      <h4>剪辑拼接与塔楼分辨率适配输出</h4>
-      <p>剪辑合成2分钟无缝循环成片，分别输出东塔、西塔两套符合官方技术文档规格视频文件。</p>
+      <h4>
+        <span class="lang-en">Delivery: Editing & Resolution Mastering</span>
+        <span class="lang-zh">交付：剪辑与分辨率适配</span>
+      </h4>
+      <p>
+        <span class="lang-en">Edited and graded into 2-minute seamless loops, exported separately for East and West towers in full compliance with the official technical specifications.</span>
+        <span class="lang-zh">剪辑合成2分钟无缝循环成片，分别输出东塔、西塔两套符合官方技术文档规格视频文件。</span>
+      </p>
     </div>
   </div>
 </section>
 
-<!--05团队介绍-->
+<!-- 07 团队 -->
 <section class="section" id="team">
-  <div class="section-label">TEAM</div>
-  <h2 class="section-title">创作团队｜神笔马良团队</h2>
+  <div class="section-label">
+    <span class="lang-en">Team</span>
+    <span class="lang-zh">创作团队</span>
+  </div>
+  <h2 class="section-title">
+    <span class="lang-en">Magic Brush Team</span>
+    <span class="lang-zh">神笔马良团队</span>
+  </h2>
   <div class="team-grid">
     <div class="team-card">
-      <h4>徐娴</h4>
-      <p>香港岭南大学数码艺术与创意产业系助理教授、博士生导师。研究方向：生成艺术、数码公共艺术，非遗数字化转译。</p>
+      <h4>Xu Xian</h4>
+      <p class="lang-en">Assistant Professor & PhD Supervisor, School of Digital Art and Creative Industries, Lingnan University (Hong Kong). Research: generative art, digital public art, digital translation of intangible heritage.</p>
+      <p class="lang-zh">香港岭南大学数码艺术与创意产业系助理教授、博士生导师。研究方向：生成艺术、数码公共艺术、非遗数字化转译。</p>
     </div>
     <div class="team-card">
-      <h4>徐婷</h4>
-      <p>香港科技大学（广州）计算媒体艺术博士候选人。媒体策划、跨媒介叙事与数字内容创作。</p>
+      <h4>Xu Ting</h4>
+      <p class="lang-en">PhD Candidate in Computational Media Art, Hong Kong University of Science and Technology (Guangzhou). Media strategy, cross-media narrative and digital content creation.</p>
+      <p class="lang-zh">香港科技大学（广州）计算媒体艺术博士候选人。媒体策划、跨媒介叙事与数字内容创作。</p>
     </div>
     <div class="team-card">
-      <h4>林子煊</h4>
-      <p>香港岭南大学数码艺术本科。负责分镜设计、AIGC提示词研发，视觉素材调试，本作品网站制作。</p>
+      <h4>Lin Zixuan</h4>
+      <p class="lang-en">BFA in Digital Art, Lingnan University (Hong Kong). Storyboard design, AIGC prompt engineering, visual material development, and this website.</p>
+      <p class="lang-zh">香港岭南大学数码艺术本科。负责分镜设计、AIGC提示词研发、视觉素材调试及本网站制作。</p>
     </div>
   </div>
 </section>
 
-<!-- 06 展览背景 -->
+<!-- 08 展览背景 -->
 <section class="section exhibition-context" id="context">
-  <div class="section-label">EXHIBITION</div>
-  <h2 class="section-title">项目背景</h2>
+  <div class="section-label">
+    <span class="lang-en">Exhibition</span>
+    <span class="lang-zh">展览背景</span>
+  </div>
+  <h2 class="section-title">
+    <span class="lang-en">About the Exhibition</span>
+    <span class="lang-zh">关于展览</span>
+  </h2>
 
   <p style="color:#aaa; max-width:900px; margin-bottom:20px;">
-本作品为「张江城市灯塔 AI 艺术展」参赛创作。展览以上海张江科学之门双塔320米建筑立面为巨大公共画布，邀请创作者以人工智能为起点，挑战假设、揭示依存、打开想象。
+    <span class="lang-en">
+      This work is an entry for the <em>Zhangjiang Urban Beacon AI Art Exhibition 2026</em>. Using the 320-metre facade of the Zhangjiang Science Gate twin towers as a giant public canvas, the exhibition invites artists to take AI as a point of departure — to question assumptions, reveal interdependencies and open new imaginations.
+    </span>
+    <span class="lang-zh">
+      本作品为「张江城市灯塔 AI 艺术展 2026」参赛创作。展览以上海张江科学之门双塔320米建筑立面为巨大公共画布，邀请创作者以人工智能为起点，挑战假设、揭示依存、打开想象。
+    </span>
   </p>
 
   <table class="spec-table">
     <thead>
       <tr>
-        <th>参数</th>
-        <th>西塔 West Tower</th>
-        <th>东塔 East Tower</th>
+        <th>
+          <span class="lang-en">Specification</span>
+          <span class="lang-zh">参数</span>
+        </th>
+        <th>
+          <span class="lang-en">West Tower</span>
+          <span class="lang-zh">西塔</span>
+        </th>
+        <th>
+          <span class="lang-en">East Tower</span>
+          <span class="lang-zh">东塔</span>
+        </th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>分辨率</td>
+        <td>
+          <span class="lang-en">Resolution</span>
+          <span class="lang-zh">分辨率</span>
+        </td>
         <td>1736 × 4672</td>
         <td>1584 × 4672</td>
       </tr>
       <tr>
-        <td>格式</td>
+        <td>
+          <span class="lang-en">Format</span>
+          <span class="lang-zh">格式</span>
+        </td>
         <td>MOV / DXV / DXV3</td>
         <td>MP4</td>
       </tr>
       <tr>
-        <td>帧率 / 编码</td>
+        <td>
+          <span class="lang-en">Frame Rate / Codec</span>
+          <span class="lang-zh">帧率 / 编码</span>
+        </td>
         <td colspan="2">25 FPS / H.264</td>
       </tr>
       <tr>
-        <td>时长 / 大小</td>
-        <td colspan="2">2 分钟无缝循环 / ≤ 200MB</td>
+        <td>
+          <span class="lang-en">Duration / File Size</span>
+          <span class="lang-zh">时长 / 大小</span>
+        </td>
+        <td colspan="2">
+          <span class="lang-en">2 min seamless loop / ≤ 200MB</span>
+          <span class="lang-zh">2 分钟无缝循环 / ≤ 200MB</span>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -598,11 +1307,37 @@ body {
 
 <!-- 页脚 -->
 <footer class="footer">
-  <p>《脉织双城》｜神笔马良团队｜张江城市灯塔 AI 艺术展参赛作品</p>
+  <p>
+    <span class="lang-en"><em>Weave of Twin Towers</em> · Magic Brush Team · Entry for Zhangjiang Urban Beacon AI Art Exhibition 2026</span>
+    <span class="lang-zh">《脉织双城》· 神笔马良团队 · 张江城市灯塔 AI 艺术展 2026 参赛作品</span>
+  </p>
 </footer>
 
 <script>
-// 平滑滚动
+// ===== 一键语言切换 =====
+function toggleLanguage() {
+  document.body.classList.toggle('zh-mode');
+  // 更新html lang属性
+  document.documentElement.lang = document.body.classList.contains('zh-mode') ? 'zh-CN' : 'en';
+}
+
+// ===== 分镜选项卡切换 =====
+function switchTab(tower) {
+  // 移除所有激活状态
+  document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+  
+  // 激活对应塔
+  if(tower === 'east') {
+    document.querySelectorAll('.tab-btn')[0].classList.add('active');
+    document.getElementById('tab-east').classList.add('active');
+  } else {
+    document.querySelectorAll('.tab-btn')[1].classList.add('active');
+    document.getElementById('tab-west').classList.add('active');
+  }
+}
+
+// ===== 平滑滚动 =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
@@ -610,7 +1345,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// 滚动导航效果
+// ===== 滚动导航效果 =====
 window.addEventListener('scroll', () => {
   const nav = document.querySelector('.nav');
   nav.style.background = window.scrollY > 50
